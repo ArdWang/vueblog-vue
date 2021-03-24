@@ -28,8 +28,8 @@
         data() {
             return {
                 ruleForm: {
-                    username: '',
-                    password: '',
+                    username: 'markerhub',
+                    password: '111111',
                 },
                 rules: {
                     username: [
@@ -48,6 +48,24 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         alert('submit!');
+                        const _this = this;
+                        this.$axios.post("http://localhost:8081/login",this.ruleForm).then(
+                            res =>{
+
+                                const jwt = res.headers['authorization'];
+                                const userInfo = res.data.data;
+                                //console.log(userInfo)
+
+                                // 把数据共享出去
+                                _this.$store.commit("SET_TOKEN", jwt);
+                                _this.$store.commit("SET_USERINFO", userInfo);
+
+                                // 获取共享数据
+                                console.log(_this.$store.getters.getUser);
+
+                                _this.$router.push("/blogs");
+                            }
+                        )
                     } else {
                         console.log('error submit!!');
                         return false;
