@@ -47,9 +47,9 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
+                        //alert('submit!');
                         const _this = this;
-                        this.$axios.post("http://localhost:8081/login",this.ruleForm).then(
+                        this.$axios.post("/login",this.ruleForm).then(
                             res =>{
 
                                 const jwt = res.headers['authorization'];

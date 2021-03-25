@@ -5,7 +5,7 @@ import Blogs from '../views/Blogs.vue'
 import BlogEdit from '../views/BlogEdit.vue'
 import BlogDetail from '../views/BlogDetail.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {

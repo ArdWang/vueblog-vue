@@ -9,14 +9,19 @@ import "element-ui/lib/theme-chalk/index.css"
 
 // 网络请求
 import axios from 'axios'
-Vue.prototype.$axios = axios
 
-Vue.use(Element)
+import "./axios"
 
-Vue.config.productionTip = false
+Vue.use(Element);
+
+Vue.config.productionTip = false;
+Vue.prototype.$axios = axios;
+
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+
