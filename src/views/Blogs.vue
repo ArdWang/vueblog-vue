@@ -1,14 +1,15 @@
 <template>
     <!--只能一个div-->
     <div>
-        blogs
-
+        <Header></Header>
     </div>
 </template>
 
 <script>
+    import Header from "../components/Header";
     export default {
-        name: "blogs"
+        name: "Blogs.vue",
+        components: {Header}
     }
 </script>
 
