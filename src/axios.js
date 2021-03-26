@@ -21,18 +21,18 @@ axios.interceptors.response.use(response => {
         } else {
             // 弹窗异常信息
             Element.Message({
-                message: response.data.msg,
+                message: response.data.message,
                 type: 'error',
                 duration: 2 * 1000
             });
             // 直接拒绝往下面返回结果信息
-            return Promise.reject(response.data.msg)
+            return Promise.reject(response.data.message)
         }
     },
     error => {
         console.log('err' + error);// for debug
         if(error.response.data) {
-            error.message = error.response.data.msg
+            error.message = error.response.data.message
         }
         // 根据请求状态觉得是否登录或者提示其他
         if (error.response.status === 401) {
