@@ -5,7 +5,7 @@
         <div class="mblog">
             <h2>{{blog.title}}</h2>
             <el-link icon="el-icon-edit">
-                <router-link :to="{name: 'BlogAdd', params: {blogId: blog.id}}">
+                <router-link :to="{name: 'BlogAdd', params: {blogId: blog.id}}" v-show="ownBlog">
                 编辑
                 </router-link>
             </el-link>
@@ -26,8 +26,10 @@
                blog:{
                    id:"",
                    title:"moren",
-                   content:"neirong"
-               }
+                   content:"neirong",
+
+               },
+                ownBlog: false
             }
         },
         created(){
@@ -44,6 +46,7 @@
                     const md = new MarkdownIt();
                     const result = md.render(blog.content);
                     _this.blog.content = result;
+                    _this.ownBlog =  (_this.blog.userId === _this.$store.getters.getUser.id)
 
                 })
             }
